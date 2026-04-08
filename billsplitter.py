@@ -1,5 +1,9 @@
 import streamlit as st
 
+# --- Data Initialization ---
+if 'items' not in st.session_state:
+    st.session_state.items = []
+    
 st.set_page_config(page_title="Fair Share Bill Splitter", page_icon="💸")
 
 st.title("💸 Fair Share Splitter")
@@ -11,9 +15,7 @@ flat_tax = st.sidebar.number_input(
     "Total Tax Amount ($)", min_value=0.0, value=0.0, step=0.1)
 discount_perc = st.sidebar.slider("Total Discount (%)", 0, 100, 0)
 
-# --- Data Initialization ---
-if 'items' not in st.session_state:
-    st.session_state.items = []
+
 
 # --- Input Form ---
 with st.form("item_form", clear_on_submit=True):
